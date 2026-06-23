@@ -28,7 +28,7 @@ echo
 read -p "proceed? (y/N): " proceed
 echo
 if ! [[ "$proceed" == "y" || "$proceed" == "Y" ]]; then
-	warn "i hope you change your min ><"
+	warn "i hope you change your mind ><"
 	exit 1
 fi
 
@@ -88,6 +88,7 @@ sudo pacman -S --needed --noconfirm \
     alsa-utils
 cargo install wiremix
 
+# TODO: Do more research on fonts
 info "setting up fonts! fira-code for tui and ubuntu for ui"
 sudo pacman -S --needed \
     ttf-fira-code \
@@ -102,9 +103,10 @@ sudo pacman -S --needed --noconfirm \
 	neovim \
 	fastfetch \
 	tmux \
-	yazi
+	yazi \
+	btop
 
-# ... more installation ... ;-;
+# ...
 
 # --- Configuring & Ricing ---
 for dir in "$REPO_DIR"/dotfiles/.config/*; do
