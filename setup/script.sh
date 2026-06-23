@@ -11,7 +11,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-info() { echo -e "${BLUE}[BOOTSTRAP]${NC} $1"; }
+info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
 warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 error() { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
@@ -104,5 +104,21 @@ sudo pacman -S --needed --noconfirm \
 	tmux \
 	yazi
 
+# ... more installation ... ;-;
 
-# ... more installation
+# --- Configuring & Ricing ---
+for dir in "$REPO_DIR"/dotfiles/.config/*; do
+    name=$(basename "$dir")
+
+    echo "Linking $name"
+    ln -sfn "$dir" "$HOME/.config/$name"
+done
+if [ -e "$HOME/.config/$name" ] && [ ! -L "$HOME/.config/$name" ]; then
+    mv "$HOME/.config/$name" "$backup_dir/"
+fi
+for dir in "$REPO_DIR"/dotfiles/.config/*; do
+    name=$(basename "$dir")
+
+    echo "Linking $name"
+    ln -sfn "$dir" "$HOME/.config/$name"
+done
