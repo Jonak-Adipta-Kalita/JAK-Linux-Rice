@@ -1,4 +1,3 @@
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 abbr --add iapp 'sudo pacman -S'
@@ -7,7 +6,7 @@ abbr --add gstat 'git status'
 abbr --add ga 'git add'
 abbr --add gc --set-cursor 'git commit -m "%"'
 abbr --add gac --set-cursor 'git add . && git commit -m "%"'
-abbr --add gp --set-cursor 'git add . && git commit -m "%"'
+abbr --add gp 'git push'
 abbr --add gpull 'git pull'
 
 alias ls='eza -a --icons=always'

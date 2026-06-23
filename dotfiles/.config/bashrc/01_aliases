@@ -1,0 +1,14 @@
+alias grep='grep --color=auto'
+
+alias iapp='sudo pacman -S'
+
+alias gstat='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gac='git add . && git commit -m'
+alias gp='git push'
+alias gpull='git pull'
+
+alias ls='eza -a --icons=always'
+alias ll='eza -al --icons=always'
+alias lt='eza -a --tree --level=1 --icons=always'
