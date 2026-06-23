@@ -21,7 +21,7 @@ if ! command -v pacman &> /dev/null; then
 	exit 1
 fi
 
-# --- Initialization ---
+# --- Installation ---
 info "starting installer script... ehehehe :D"
 
 echo
@@ -57,6 +57,7 @@ else
 
     success "rustup installed (stable toolchain set)"
 fi
+echo
 
 info "installing paru (AUR helper)..."
 if command -v paru &> /dev/null; then
@@ -75,9 +76,11 @@ else
 
     success "paru installed successfully"
 fi
+echo
 
 info "installing clang + llvm toolchain..."
 sudo pacman -S --needed --noconfirm clang llvm lld lldb
+echo
 
 info "configuring audio system with pipewire"
 sudo pacman -S --needed --noconfirm \
@@ -85,8 +88,10 @@ sudo pacman -S --needed --noconfirm \
     wireplumber \
     pipewire-alsa \
     pipewire-pulse \
-    alsa-utils
+    alsa-utils \
+	ffmpeg
 cargo install wiremix
+echo
 
 # TODO: Do more research on fonts
 info "setting up fonts! fira-code for tui and ubuntu for ui"
@@ -96,23 +101,24 @@ sudo pacman -S --needed \
     ttf-ubuntu-font-family \
     noto-fonts \
     noto-fonts-emoji
+echo
 
 info "installing more packages (feel the bloat eh?)"
 sudo pacman -S --needed --noconfirm \
+	fish \
 	eza \
 	neovim \
 	fastfetch \
 	tmux \
 	yazi \
 	btop
-
-# ...
+echo
 
 # --- Configuring & Ricing ---
 for dir in "$REPO_DIR"/dotfiles/.config/*; do
     name=$(basename "$dir")
 
-    echo "Linking $name"
+    info "Linking $name"
     ln -sfn "$dir" "$HOME/.config/$name"
 done
 if [ -e "$HOME/.config/$name" ] && [ ! -L "$HOME/.config/$name" ]; then
@@ -121,6 +127,15 @@ fi
 for dir in "$REPO_DIR"/dotfiles/.config/*; do
     name=$(basename "$dir")
 
-    echo "Linking $name"
+    info "Linking $name"
     ln -sfn "$dir" "$HOME/.config/$name"
 done
+
+git config --global init.defaultBranch main
+echo
+
+# --- Installation ---
+info "installing fish shell..."
+command -v fish | sudo tee -a /etc/shells
+chsh -s "$(command -v fish)"
+fish

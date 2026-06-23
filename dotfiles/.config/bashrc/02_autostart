@@ -1,3 +1,3 @@
 if [[ $(tty) == *"pts"* ]]; then
-	fastfetch
+	# pass
 fi
