@@ -47,7 +47,8 @@ return {
 				"rust_analyzer",
 				"tailwindcss",
 				"svelte",
-				"emmet_ls"
+				"emmet_ls",
+				"omnisharp"
 			},
 			handlers = {
 				function(server_name)
@@ -59,6 +60,7 @@ return {
 		})
 
 		local lspconfig = require("lspconfig")
+
 		lspconfig.lua_ls.setup {
 			settings = {
 				Lua = {
@@ -73,6 +75,14 @@ return {
 				}
 			}
 		}
+
+		lspconfig.rust_analyzer.setup {}
+
+		lspconfig.omnisharp.setup({
+			cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+			enable_roslyn_analyzers = true,
+			organize_imports_on_format = true,
+		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		cmp.setup({
