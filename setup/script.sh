@@ -127,7 +127,7 @@ info "getting the lovely wallpapers"
 xdg-users-dirs-update
 ln -sfn "$REPO_DIR"/assets/wallpapers "$HOME/Pictures/Wallpapers"
 awww-daemon & disown
-awww img "$REPO_DIR"/assets/wallpapers/hatsune-miku.png
+awww img "$REPO_DIR"/assets/wallpapers/arch.png
 echo
 
 for dir in "$REPO_DIR"/dotfiles/.config/*; do
