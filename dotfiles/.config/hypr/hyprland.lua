@@ -5,7 +5,6 @@ require("src.autostarts")
 require("src.systems.environments")
 require("src.systems.permissions")
 
-require("src.look_and_feel.general")
 require("src.look_and_feel.decorations")
 require("src.look_and_feel.animations")
 
