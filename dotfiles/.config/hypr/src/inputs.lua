@@ -1,7 +1,3 @@
----------------
----- INPUT ----
----------------
-
 hl.config({
 	input = {
 		kb_layout    = "us",
@@ -20,15 +16,27 @@ hl.config({
 	},
 })
 
+-- Scroll workspace through 3 fingers vertical
 hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace"
+    fingers = 3,
+    direction = "vertical",
+    action = "workspace"
 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-	name        = "epic-mouse-v1",
-	sensitivity = -0.5,
+-- Scrolling with 3 fingers horizontal
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "scroll_move",
+    scale = 0.9,
 })
+
+-- Fullscreen on with 4 finger pinchout
+hl.gesture({ fingers = 4, direction = "pinchout", action = function ()
+    hl.dispatch(hl.dsp.window.fullscreen({ action="set" }))
+end})
+
+-- Fullscreen off with 4 finger pinchin
+hl.gesture({ fingers = 4, direction = "pinchin", action = function ()
+    hl.dispatch(hl.dsp.window.fullscreen({ action="unset" }))
+end})
