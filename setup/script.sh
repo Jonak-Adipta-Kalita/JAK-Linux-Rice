@@ -115,6 +115,21 @@ sudo pacman -S --needed --noconfirm \
 echo
 
 # --- Configuring & Ricing ---
+info "the main ricing config part..."
+sudo pacman -S --needed --noconfirm \
+	waybar \
+	swaync
+paru -S --needed --noconfirm \
+	awww
+echo
+
+info "getting the lovely wallpapers"
+xdg-users-dirs-update
+ln -sfn "$REPO_DIR"/assets/wallpapers "$HOME/Pictures/Wallpapers"
+awww-daemon & disown
+awww img "$REPO_DIR"/assets/wallpapers/hatsune-miku.png
+echo
+
 for dir in "$REPO_DIR"/dotfiles/.config/*; do
     name=$(basename "$dir")
 
@@ -130,6 +145,7 @@ for dir in "$REPO_DIR"/dotfiles/.config/*; do
     info "Linking $name"
     ln -sfn "$dir" "$HOME/.config/$name"
 done
+echo
 
 git config --global init.defaultBranch main
 echo
