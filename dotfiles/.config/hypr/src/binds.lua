@@ -33,6 +33,20 @@ hl.bind(mainMod .. " + ALT + left",  hl.dsp.window.swap({ direction = "l" }), { 
 hl.bind(mainMod .. " + ALT + right", hl.dsp.window.swap({ direction = "r" }), { description = "Swap tiled window right" })
 hl.bind(mainMod .. " + ALT + up",    hl.dsp.window.swap({ direction = "u" }), { description = "Swap tiled window up" })
 hl.bind(mainMod .. " + ALT + down",  hl.dsp.window.swap({ direction = "d" }), { description = "Swap tiled window down" })
+--
+hl.bind(mainMod .. " + SHIFT + L", function()
+    local f = io.popen("hyprctl getoption general:layout")
+    if not f then return end
+
+    local out = f:read("*a")
+    f:close()
+
+    if out:find("dwindle") then
+        hl.dispatch(hl.dsp.exec_cmd("hyprctl keyword general:layout scrolling"))
+    else
+        hl.dispatch(hl.dsp.exec_cmd("hyprctl keyword general:layout dwindle"))
+    end
+end, { description = "Toggle dwindle/scrolling layout" })
 
 -- Workspace
 for i = 1, 10 do
