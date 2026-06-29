@@ -144,6 +144,7 @@ for dir in "$REPO_DIR"/dotfiles/.config/*; do
     info "Linking $name"
     ln -sfn "$dir" "$HOME/.config/$name"
 done
+ln -sfn "$REPO_DIR"/.bashrc $HOME/.bashrc
 echo
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
