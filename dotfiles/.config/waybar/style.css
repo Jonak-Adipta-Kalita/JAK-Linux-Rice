@@ -86,16 +86,40 @@ tooltip label {
 
 /* Applications :D */
 
-#clock,#tray,#pulseaudio,#network,#battery,#backlight,#power-profiles-daemon {
-	background-color: @crust;
-	padding: 0 15px 0 15px;
-	margin: 0 0 0 12px;
-	border-radius: 15px;
-	border: 2px solid @lavender;
-	color: @subtext1;
+#clock,
+#tray,
+#pulseaudio,
+#network,
+#battery,
+#backlight,
+#power-profiles-daemon {
+  background-color: @mantle;
+  padding: 0 15px 0 15px;
+  margin: 0 0 0 12px;
+  border-radius: 15px;
+  color: @subtext1;
+}
+
+#pulseaudio {
+  color: @sky;
+}
+
+#network {
+  color: @green;
+}
+
+#backlight {
+  color: @peach;
+}
+
+#battery {
+  color: @mauve;
+}
+
+#power-profiles-daemon {
+  color: @rosewater;
 }
 
 #clock {
-	margin: 0 10px 0 12px;
-	color: @text;
+  margin: 0 12px 0 12px;
 }

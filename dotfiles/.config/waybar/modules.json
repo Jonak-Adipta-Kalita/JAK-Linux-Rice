@@ -14,22 +14,21 @@
       "*": 5
     }
   },
-	"clock": {
-		"interval": 60,
-		"format": "{:%H:%M}",
-		"tooltip": true,
-		 
-	},
+  "clock": {
+    "interval": 60,
+    "format": "{:%H:%M}",
+    "tooltip": true
+  },
   "network": {
     "format": "{ifname}",
     "format-wifi": " {signalStrength}%",
-    "format-ethernet": "  {ifname}",
+    "format-ethernet": "  {ifname}",
     "format-disconnected": "Disconnected ⚠",
-    "tooltip-format": " {ifname} via {gwaddri}",
-    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format": "{ifname} via {gwaddri}",
+    "tooltip-format-wifi": "{ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
     "tooltip-format-ethernet": "IP: {ipaddr}\nup: {bandwidthUpBits} down: {bandwidthDownBits}",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
+    "max-length": 50
   },
   "battery": {
     "interval": 1,
@@ -42,13 +41,7 @@
     "format-plugged": "  {capacity}%",
     "format-alt": "{icon}  {time}",
     // "format-good": "", // An empty format will hide the module
-    "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ]
+    "format-icons": [" ", " ", " ", " ", " "]
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -57,7 +50,7 @@
     "format-icons": {
       "default": "",
       "performance": "",
-      "balanced": "",
+      "balanced": "",
       "power-saver": ""
     },
     "on-scroll-up": "true",
@@ -65,27 +58,23 @@
   },
   "pulseaudio": {
     "format": "{icon}  {volume}%",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-bluetooth": "{volume}% {icon}󰂯 {format_source}",
+    "format-bluetooth-muted": "󰝟 {icon}󰂯 {format_source}",
+    "format-muted": "󰝟 {format_source}",
+    "format-source": "{volume}% 󰍬",
+    "format-source-muted": "󰍭",
     "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
-      "phone": " ",
-      "portable": " ",
-      "car": " ",
-      "default": [
-        "",
-        "",
-        ""
-      ]
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click": "wiremix"
   },
- "backlight": {
+  "backlight": {
     "format": "{icon} {percent}%",
     "format-icons": [
       "",
@@ -105,6 +94,6 @@
       ""
     ],
     "scroll-step": 1,
-	"tooltip": false
+    "tooltip": false
   }
 }

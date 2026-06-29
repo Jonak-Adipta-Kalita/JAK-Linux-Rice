@@ -96,6 +96,7 @@ echo
 info "setting up fonts! jetbrains-mono for tui and noto-fonts for ui"
 sudo pacman -S --needed --noconfirm \
 	ttf-jetbrains-mono-nerd \
+	ttf-nerd-fonts-symbols \
 	noto-fonts \
 	noto-fonts-emoji \
 	noto-fonts-cjk

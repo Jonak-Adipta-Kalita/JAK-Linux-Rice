@@ -5,13 +5,14 @@
   "modules-left": ["tray"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
-		"pulseaudio",
-		"network",
-		"backlight",
-		"power-profiles-daemon",
-		"battery",
-		"custom/notification",
-		"clock"],
+    "pulseaudio",
+    "network",
+    "backlight",
+    "power-profiles-daemon",
+    "battery",
+    "custom/notification",
+    "clock",
+  ],
 
   "include": ["~/.config/waybar/modules.json"],
 }
