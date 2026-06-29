@@ -101,7 +101,8 @@ sudo pacman -S --needed --noconfirm \
 	noto-fonts-cjk
 echo
 
-info "installing more packages (feel the bloat eh?)"
+# --- Configuring & Ricing ---
+info "the main ricing config part... installing more packages (feel the bloat eh?)"
 sudo pacman -S --needed --noconfirm \
 	fish \
 	eza \
@@ -111,15 +112,11 @@ sudo pacman -S --needed --noconfirm \
 	yazi \
 	btop \
 	unzip \
-	less
-echo
-
-# --- Configuring & Ricing ---
-info "the main ricing config part..."
-sudo pacman -S --needed --noconfirm \
+	less \
 	waybar \
 	swaync \
-	rofi-wayland
+	rofi-wayland \
+	nwg-look
 paru -S --needed --noconfirm \
 	awww
 echo
@@ -131,12 +128,6 @@ awww-daemon & disown
 awww img "$REPO_DIR"/assets/wallpapers/arch.png
 echo
 
-for dir in "$REPO_DIR"/dotfiles/.config/*; do
-    name=$(basename "$dir")
-
-    info "Linking $name"
-    ln -sfn "$dir" "$HOME/.config/$name"
-done
 if [ -e "$HOME/.config/$name" ] && [ ! -L "$HOME/.config/$name" ]; then
     mv "$HOME/.config/$name" "$backup_dir/"
 fi
@@ -151,6 +142,9 @@ echo
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -sfn "$REPO_DIR"/dotfiles/.tmux.conf $HOME/.config/.tmux.conf
+echo
+
+ln -sfn "$REPO_DIR"/dotfiles/.gtkrc-2.0 $HOME/.config/.gtkrc-2.0
 echo
 
 git config --global init.defaultBranch main
