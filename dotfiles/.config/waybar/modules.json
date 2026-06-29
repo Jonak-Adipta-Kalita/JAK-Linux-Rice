@@ -96,18 +96,24 @@
     "scroll-step": 1,
     "tooltip": false
   },
-	"custom/notification": {
-    "tooltip-format": "Left: Notifications\nRight: Do not disturb",
-    "format": "{icon}",
+  "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
     "format-icons": {
-      "notification": "notifications_active",
-      "none": "notifications",
-      "dnd-notification": "notifications_active",
-      "dnd-none": "notifications_paused",
-      "inhibited-notification": "notification_important",
-      "inhibited-none": "notification_important",
-      "dnd-inhibited-notification": "notification_off",
-      "dnd-inhibited-none": "notifications_off"
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
     },
-	}
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
 }

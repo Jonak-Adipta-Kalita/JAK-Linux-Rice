@@ -92,7 +92,8 @@ tooltip label {
 #network,
 #battery,
 #backlight,
-#power-profiles-daemon {
+#power-profiles-daemon,
+#custom-notification {
   background-color: @mantle;
   padding: 0 15px 0 15px;
   margin: 0 0 0 12px;
@@ -120,6 +121,11 @@ tooltip label {
   color: @rosewater;
 }
 
+#custom-notification {
+  color: @subtext2;
+}
+
 #clock {
+  color: @maroon;
   margin: 0 12px 0 12px;
 }
