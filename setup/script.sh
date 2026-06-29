@@ -119,7 +119,8 @@ sudo pacman -S --needed --noconfirm \
 	rofi-wayland \
 	nwg-look
 paru -S --needed --noconfirm \
-	awww
+	awww \
+	tree
 echo
 
 info "getting the lovely wallpapers"
