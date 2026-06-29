@@ -163,6 +163,7 @@ curl -sS https://starship.rs/install.sh | sh
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 fisher install jorgebucaran/fisher
 fisher install jorgebucaran/nvm.fish
+fisher install catppuccin/fish
 
 info "installing node & web stuff eheheh"
 nvm install lts
