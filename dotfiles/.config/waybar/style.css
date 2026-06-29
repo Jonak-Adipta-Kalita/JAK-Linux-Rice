@@ -1,85 +1,101 @@
 @import "themes/catppuccin-mocha.css";
 
 * {
-    border: none;
-    border-radius: 0px;
-    font-family: "Noto Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
-	font-size: 18px;
-	font-weight: bold;
+  border: none;
+  border-radius: 0px;
+  font-family: "Noto Sans", "JetBrainsMono Nerd Font Propo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 window#waybar {
-    background: transparent;
+  background: transparent;
 }
 
 .modules-left {
-    margin:0px 0px 10px 10px;
+  margin: 0px 0px 10px 10px;
 }
 
 .modules-right {
-    margin:0px 10px 10px 0px;
+  margin: 0px 10px 10px 0px;
 }
 
 .modules-center {
-    margin:0px 0px 10px 0px;
+  margin: 0px 0px 10px 0px;
 }
 
 /* Tooltip */
 
 tooltip {
-	background: @crust;
-	border: 1px solid @base;
-	border-radius: 12px;
+  background: @crust;
+  border: 1px solid @base;
+  border-radius: 12px;
 }
 
 tooltip label {
-	color: @text;
-	padding: 6px;
+  color: @text;
+  padding: 6px;
 }
 
 /* Workspaces */
 
 #workspaces {
-	background-color: @crust;
-	padding: 5px 3px;
-	margin: 0 0 0 12px;
-	border: 2px solid @lavender;
-	border-radius: 15px;
+  background-color: @crust;
+  padding: 5px 3px;
+  margin: 0 0 0 12px;
+  border: 2px solid @lavender;
+  border-radius: 15px;
 }
 
 #workspaces button {
-	padding: 2px 6px;
-	margin: 0px 3px;
-	border-radius: 50px;
-	color: @text;
-	background-color: @mantle;
-	transition: all 0.3s ease-in-out;
+  padding: 2px 6px;
+  margin: 0px 3px;
+  border-radius: 50px;
+  color: @text;
+  background-color: @mantle;
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active {
-	background-color: @base;
-	color: @subtext1;
-	min-width: 60px;
-	border-radius: 15px;
+  background-color: @base;
+  color: @subtext1;
+  min-width: 60px;
+  border-radius: 15px;
 }
 
 #workspaces button:hover {
-	background: none;
-	box-shadow: none;
-	text-shadow: none;
-	background-color: @mantle;
-	color: @text;
-	border-right: 16px;
-	min-width: 60px;
-	background-size: 400% 400%;
-	transition: all 0.3s ease-in-out;
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  background-color: @mantle;
+  color: @text;
+  border-right: 16px;
+  min-width: 60px;
+  background-size: 400% 400%;
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.urgent {
-	background-color: @sapphire;
+  background-color: @sapphire;
+  color: @text;
+  border-radius: 16px;
+  min-width: 60px;
+  background-size: 400% 400%;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Applications :D */
+
+#clock,#tray,#pulseaudio,#network,#battery,#backlight,#power-profiles-daemon {
+	background-color: @crust;
+	padding: 0 15px 0 15px;
+	margin: 0 0 0 12px;
+	border-radius: 15px;
+	border: 2px solid @lavender;
+	color: @subtext1;
+}
+
+#clock {
+	margin: 0 10px 0 12px;
 	color: @text;
-	border-radius: 16px;
-	min-width: 60px;
-	background-size: 400% 400%;
-	transition: all 0.3s ease-in-out;
 }

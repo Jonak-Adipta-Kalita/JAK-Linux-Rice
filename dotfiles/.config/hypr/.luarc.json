@@ -1,9 +1,6 @@
 {
   "workspace": {
-    "library": [
-      "${3rd}/luv/library",
-      "~/.config/hypr/stubs"
-    ],
+    "library": ["${3rd}/luv/library", "~/.config/hypr/stubs"],
     "checkThirdParty": false
   },
   "diagnostics": {
