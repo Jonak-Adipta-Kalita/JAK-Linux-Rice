@@ -9,7 +9,7 @@ return {
 				light = "latte",
 				dark = "mocha",
 			},
-			transparent = false
+			transparent = true
 		},
 		config = function(_, opts)
 			require("catppuccin").setup(opts)

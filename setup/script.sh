@@ -93,14 +93,12 @@ sudo pacman -S --needed --noconfirm \
 cargo install wiremix
 echo
 
-# TODO: Do more research on fonts
-info "setting up fonts! fira-code for tui and ubuntu for ui"
-sudo pacman -S --needed \
-    ttf-fira-code \
-    ttf-firacode-nerd \
-    ttf-ubuntu-font-family \
-    noto-fonts \
-    noto-fonts-emoji
+info "setting up fonts! jetbrains-mono for tui and noto-fonts for ui"
+sudo pacman -S --needed --noconfirm \
+	ttf-jetbrains-mono-nerd \
+	noto-fonts \
+	noto-fonts-emoji \
+	noto-fonts-cjk
 echo
 
 info "installing more packages (feel the bloat eh?)"
@@ -118,7 +116,8 @@ echo
 info "the main ricing config part..."
 sudo pacman -S --needed --noconfirm \
 	waybar \
-	swaync
+	swaync \
+	rofi-wayland
 paru -S --needed --noconfirm \
 	awww
 echo
@@ -147,6 +146,10 @@ for dir in "$REPO_DIR"/dotfiles/.config/*; do
 done
 echo
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ln -sfn "$REPO_DIR"/dotfiles/.tmux.conf $HOME/.config/.tmux.conf
+echo
+
 git config --global init.defaultBranch main
 echo
 
@@ -154,4 +157,5 @@ echo
 info "installing fish shell..."
 command -v fish | sudo tee -a /etc/shells
 chsh -s "$(command -v fish)"
+curl -sS https://starship.rs/install.sh | sh
 fish
