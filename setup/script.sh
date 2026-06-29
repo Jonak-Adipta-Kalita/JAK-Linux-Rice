@@ -109,7 +109,9 @@ sudo pacman -S --needed --noconfirm \
 	fastfetch \
 	tmux \
 	yazi \
-	btop
+	btop \
+	unzip \
+	less
 echo
 
 # --- Configuring & Ricing ---
@@ -168,3 +170,6 @@ fisher install catppuccin/fish
 info "installing node & web stuff eheheh"
 nvm install lts
 nvm use lts
+
+info "installing game-dev env with c#"
+sudo pacman -S dotnet-sdk gimp godot-mono
