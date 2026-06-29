@@ -4,16 +4,11 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/nvim-cmp",
 		"j-hui/fidget.nvim",
+		"hrsh7th/cmp-nvim-lsp",
 	},
 
 	config = function()
-		local cmp = require("cmp")
 		local cmp_lsp = require("cmp_nvim_lsp")
 		local capabilities = vim.tbl_deep_extend(
 			"force",
@@ -24,18 +19,7 @@ return {
 
 		require("fidget").setup({})
 
-		require("mason").setup({
-			ui = {
-				border = "rounded"
-			},
-			ensure_installed = {
-				"stylua",
-				"autopep8",
-				"clang-format",
-				"prettierd",
-				"eslint_d"
-			}
-		})
+		require("mason").setup({})
 
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -68,9 +52,7 @@ return {
 						globals = { "vim" }
 					},
 					workspaces = {
-						library = {
-							"${3rd}/love2d/library",
-						}
+						library = {}
 					}
 				}
 			}
@@ -84,20 +66,10 @@ return {
 			organize_imports_on_format = true,
 		})
 
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		cmp.setup({
-			mapping = cmp.mapping.preset.insert({
-				["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
-				["<TAB>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete(),
-			}),
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-			}, {
-				{ name = "buffer" },
-			})
-		})
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
+		vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 		vim.diagnostic.config({
 			float = {
@@ -109,12 +81,5 @@ return {
 				prefix = "",
 			},
 		})
-
-		vim.cmd([[
-		  augroup format_on_save
-			autocmd!
-			autocmd BufWritePre *.py,*.lua,*.c,*.js,*.ts,*.jsx,*.tsx :lua vim.lsp.buf.format()
-		  augroup END
-		]])
 	end
 }

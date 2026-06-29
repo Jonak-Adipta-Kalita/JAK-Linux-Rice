@@ -9,7 +9,10 @@ return {
 				light = "latte",
 				dark = "mocha",
 			},
-			transparent = true
+			transparent = false,
+			integrations = {
+				lualine = true,
+			}
 		},
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
@@ -17,16 +20,15 @@ return {
 		end,
 	},
 	{
-		"vim-airline/vim-airline",
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({})
+		end
 	},
 	{
 		"ryanoasis/vim-devicons",
 		priority = 500,
 	},
-	{
-		"preservim/nerdtree",
-	},
-
 	{
 		"ap/vim-css-color",
 	},
