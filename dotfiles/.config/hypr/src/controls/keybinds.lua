@@ -3,6 +3,7 @@ local mainMod = "SUPER"
 -- Applications & Actions
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show drun -show-icons -matching fuzzy"))
+hl.bind("CTRL + ALT + S", hl.dsp.exec_cmd("~/.config/waybar/launch.sh"))
 
 -- Window
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())

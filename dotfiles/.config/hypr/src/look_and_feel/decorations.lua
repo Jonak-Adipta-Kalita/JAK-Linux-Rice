@@ -3,7 +3,7 @@ hl.config({
 		gaps_in          = 10,
 		gaps_out         = 20,
 
-		border_size      = 1,
+		border_size      = 2,
 
 		col              = {
 			active_border   = "#7287fd",

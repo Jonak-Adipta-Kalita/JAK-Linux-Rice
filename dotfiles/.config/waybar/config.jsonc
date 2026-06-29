@@ -1,0 +1,12 @@
+{
+	"position": "bottom",
+	"margin-top": 15,
+
+	"modules-left": [],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": [],
+
+	"include": [
+		"~/.config/waybar/modules.json"
+	]
+}

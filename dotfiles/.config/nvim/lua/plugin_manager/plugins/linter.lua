@@ -29,7 +29,7 @@ return {
 		vim.cmd([[
 		  augroup format_on_save
 			autocmd!
-			autocmd BufWritePre *.py,*.lua,*.c,*.js,*.ts,*.jsx,*.tsx :lua vim.lsp.buf.format()
+			autocmd BufWritePre *.py,*.lua,*.c,*.js,*.ts,*.jsx,*.tsx,*.json,*.cs,*.rs :lua vim.lsp.buf.format()
 		  augroup END
 		]])
 	end
