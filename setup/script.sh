@@ -158,5 +158,12 @@ echo
 info "installing fish shell..."
 command -v fish | sudo tee -a /etc/shells
 chsh -s "$(command -v fish)"
-curl -sS https://starship.rs/install.sh | sh
 fish
+curl -sS https://starship.rs/install.sh | sh
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+fisher install jorgebucaran/fisher
+fisher install jorgebucaran/nvm.fish
+
+info "installing node & web stuff eheheh"
+nvm install lts
+nvm use lts
