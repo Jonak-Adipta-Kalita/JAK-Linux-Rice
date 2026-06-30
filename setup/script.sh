@@ -163,9 +163,40 @@ fisher install jorgebucaran/fisher
 fisher install jorgebucaran/nvm.fish
 fisher install catppuccin/fish
 
+info "getting the desktop applications... :D"
+paru -S --needed --noconfirm \
+  vesktop \
+  spotify \
+  spicetify-cli
+sudo pacman -S --needed --noconfirm \
+  flatpak \
+  obsidian
+flatpak install flathub app.zen_browser.zen
+echo
+
+info "real quick... go open spotify and login, and stay there for like a min... need some gen files"
+read -p "done?" spotify_done
+sudo chmod a+wr /opt/spotify
+sudo chmod -R a+wr /opt/spotify/Apps
+spicetify apply
+curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
+echo
+
 info "installing node & web stuff eheheh"
 nvm install lts
 nvm use lts
 
 info "installing game-dev env with c#"
-sudo pacman -S dotnet-sdk gimp godot-mono
+sudo pacman -S --needed --noconfirm \
+  dotnet-sdk \
+  gimp \
+  godot-mono \
+  blender
+echo
+
+info "setting up music prod stuff"
+sudo pacman -S --needed --noconfirm \
+  audacity \
+  reaper \
+  ffmpeg \
+  qpwgraph
