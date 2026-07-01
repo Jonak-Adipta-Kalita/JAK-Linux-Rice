@@ -25,7 +25,7 @@ fi
 info "starting installer script... ehehehe :D"
 
 echo
-read -p "proceed? (y/N): " proceed
+read -p "info proceed? (y/N): " proceed
 echo
 if ! [[ "$proceed" == "y" || "$proceed" == "Y" ]]; then
 	warn "i hope you change your mind ><"
@@ -175,16 +175,17 @@ flatpak install flathub app.zen_browser.zen
 echo
 
 info "real quick... go open spotify and login, and stay there for like a min... need some gen files"
-read -p "done?" spotify_done
+read -p "info done?" spotify_done
 sudo chmod a+wr /opt/spotify
 sudo chmod -R a+wr /opt/spotify/Apps
 spicetify apply
-curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 echo
 
 info "installing node & web stuff eheheh"
 nvm install lts
 nvm use lts
+corepack enable
+yes | yarn -v
 
 info "installing game-dev env with c#"
 sudo pacman -S --needed --noconfirm \
@@ -192,6 +193,18 @@ sudo pacman -S --needed --noconfirm \
   gimp \
   godot-mono \
   blender
+echo
+
+info "setting up printer stuff"
+sudo pacman -S --needed --noconfirm \
+	cups \
+	cups-filters \
+	system-config-printer
+sudo systemctl enable --now cups
+sudo groupadd lpadmin 2>/dev/null
+sudo usermod -aG lpadmin $USER
+info "setup printer using lpinfo and lpadmin :D"
+read -p "info ok?" printer_understood
 echo
 
 info "setting up music prod stuff"
