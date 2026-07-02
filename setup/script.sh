@@ -117,7 +117,10 @@ sudo pacman -S --needed --noconfirm \
 	waybar \
 	swaync \
 	rofi-wayland \
-	nwg-look
+	nwg-look \
+	satty \
+	hyprshot \
+	wl-clipboard
 paru -S --needed --noconfirm \
 	awww \
 	tree
