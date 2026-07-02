@@ -160,7 +160,6 @@ fish
 curl -sS https://starship.rs/install.sh | sh
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 fisher install jorgebucaran/fisher
-fisher install jorgebucaran/nvm.fish
 fisher install catppuccin/fish
 
 info "getting the desktop applications... :D"
@@ -182,10 +181,12 @@ spicetify apply
 echo
 
 info "installing node & web stuff eheheh"
+fisher install jorgebucaran/nvm.fish
 nvm install lts
 nvm use lts
 corepack enable
 yes | yarn -v
+paru -S --needed --noconfirm ngrok
 
 info "installing game-dev env with c#"
 sudo pacman -S --needed --noconfirm \
