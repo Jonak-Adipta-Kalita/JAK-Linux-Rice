@@ -112,6 +112,7 @@ sudo pacman -S --needed --noconfirm \
 	tmux \
 	yazi \
 	btop \
+	zip \
 	unzip \
 	less \
 	waybar \
@@ -120,7 +121,8 @@ sudo pacman -S --needed --noconfirm \
 	nwg-look \
 	satty \
 	hyprshot \
-	wl-clipboard
+	wl-clipboard \
+	hypridle
 paru -S --needed --noconfirm \
 	awww \
 	tree
@@ -198,6 +200,11 @@ sudo pacman -S --needed --noconfirm \
   godot-mono \
   blender
 echo
+
+info "setting up java env ;-;"
+fisher install reitzig/sdkman-for-fish
+fish
+sdk install java 21.0.2-tem
 
 info "setting up printer stuff"
 sudo pacman -S --needed --noconfirm \
