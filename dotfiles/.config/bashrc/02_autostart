@@ -1,3 +1,4 @@
 if [[ $(tty) == *"pts"* ]]; then
-	# pass
+	export SDKMAN_DIR="/home/jonak/.sdkman"
+	[[ -s "/home/jonak/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jonak/.sdkman/bin/sdkman-init.sh"
 fi
