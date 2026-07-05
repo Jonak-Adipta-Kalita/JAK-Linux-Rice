@@ -2,11 +2,16 @@ local mainMod = "SUPER"
 
 -- Applications & Actions
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("kitty"))
-hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("rofi -show drun -show-icons -matching fuzzy"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("~/.config/rofi/launch.sh"))
 
 -- Screenshot
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
-hl.bind(mainMod .. " + CTRL + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only --freeze"))
+hl.bind(mainMod .. " + CTRL + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --freeze --raw | satty --filename -"))
+
+-- Clipboard
+hl.bind(mainMod .. " + V",
+	hl.dsp.exec_cmd(
+		"cliphist list | rofi -dmenu -theme ~/.config/rofi/clipboard.rasi | cliphist decode | wl-copy"))
 
 -- Requires :D
 require("src.controls.keybinds.window_workspace")

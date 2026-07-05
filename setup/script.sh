@@ -122,7 +122,10 @@ sudo pacman -S --needed --noconfirm \
 	satty \
 	hyprshot \
 	wl-clipboard \
-	hypridle
+	cliphist \
+	wl-clip-persist \
+	hypridle \
+	hyprpicker
 paru -S --needed --noconfirm \
 	awww \
 	tree
