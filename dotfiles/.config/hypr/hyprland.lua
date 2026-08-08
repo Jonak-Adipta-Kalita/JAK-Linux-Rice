@@ -14,3 +14,5 @@ require("src.controls.keybinds")
 require("src.controls.inputs")
 
 require("src.systems.window_rules")
+
+require("src.power") -- goes last
