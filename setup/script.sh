@@ -32,12 +32,12 @@ if ! [[ "$proceed" == "y" || "$proceed" == "Y" ]]; then
 	exit 1
 fi
 
-INSTALL_DIR="$HOME/.local/share/jak-rice"
-info "installing the files at $INSTALL_DIR"
-mkdir -p "$INSTALL_DIR"
-info "cloning repo into $INSTALL_DIR ... muehehe :D"
-git clone --depth=1 -c advice.detachedHead=false $REPO_URL "$INSTALL_DIR"
-cd "$INSTALL_DIR"
+REPO_DIR="$HOME/.local/share/jak-rice"
+info "installing the files at $REPO_DIR"
+mkdir -p "$REPO_DIR"
+info "cloning repo into $REPO_DIR ... muehehe :D"
+git clone --depth=1 -c advice.detachedHead=false $REPO_URL "$REPO_DIR"
+cd "$REPO_DIR"
 echo
 
 # --- Installation ---
@@ -125,7 +125,9 @@ sudo pacman -S --needed --noconfirm \
 	cliphist \
 	wl-clip-persist \
 	hypridle \
-	hyprpicker
+	hyprpicker \
+	zoxide \
+	fzf
 paru -S --needed --noconfirm \
 	awww \
 	tree
@@ -135,7 +137,7 @@ info "getting the lovely wallpapers"
 xdg-users-dirs-update
 ln -sfn "$REPO_DIR"/assets/wallpapers "$HOME/Pictures/Wallpapers"
 awww-daemon & disown
-awww img "$REPO_DIR"/assets/wallpapers/arch.png
+awww img "$REPO_DIR"/assets/wallpapers/1.png
 echo
 
 if [ -e "$HOME/.config/$name" ] && [ ! -L "$HOME/.config/$name" ]; then

@@ -4,6 +4,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"),
 	{ description = "Quit active window and all open instances" })
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 --
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
 	{ description = "Toggle Fullscreen" })
