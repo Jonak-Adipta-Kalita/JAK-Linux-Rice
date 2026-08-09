@@ -1,5 +1,10 @@
+-- Cursors
+hl.env("XCURSOR_THEME", "catppuccin-mocha-blue-cursors")
 hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_THEME", "catppuccin-mocha-blue-cursors")
 hl.env("HYPRCURSOR_SIZE", "24")
+
+-- Electron
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "x11")
 
 -- Toolkit Backend

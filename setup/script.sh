@@ -127,10 +127,14 @@ sudo pacman -S --needed --noconfirm \
 	hypridle \
 	hyprpicker \
 	zoxide \
-	fzf
+	fzf \
+	sassc
 paru -S --needed --noconfirm \
 	awww \
-	tree
+	tree \
+	catppuccin-gtk-theme-mocha \
+	papirus-icon-theme \
+	catppuccin-cursors-mocha
 echo
 
 info "getting the lovely wallpapers"
@@ -157,6 +161,11 @@ ln -sfn "$REPO_DIR"/dotfiles/.tmux.conf $HOME/.config/.tmux.conf
 echo
 
 ln -sfn "$REPO_DIR"/dotfiles/.gtkrc-2.0 $HOME/.config/.gtkrc-2.0
+cd "/tmp"
+git clone --depth=1 -c advice.detachedHead=false https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git
+cd Catppuccin-GTK-Theme/themes
+./install.sh -a blue -l
+cd "$REPO_DIR"
 echo
 
 git config --global init.defaultBranch main
