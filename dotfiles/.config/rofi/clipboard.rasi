@@ -12,15 +12,19 @@ configuration {
 	modi:                       "drun";
     show-icons:                 true;
     display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
 	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
 	window-format:              "{w} · {c} · {t}";
 }
 
 /*****----- Global Properties -----*****/
-@import                          "colors/catpuccin.rasi"
+* {
+    background:     #181825FF;
+    background-alt: #282839FF;
+    foreground:     #D9E0EEFF;
+    selected:       #B4BEFEFF;
+    active:         #ABE9B3FF;
+    urgent:         #F28FADFF;
+}
 
 * {
     border-colour:               var(selected);
@@ -31,11 +35,11 @@ configuration {
     normal-background:           var(background);
     normal-foreground:           var(foreground);
     urgent-background:           var(urgent);
-    urgent-foreground:           var(background);
+    urgent-foreground:           var(foreground);
     active-background:           var(active);
-    active-foreground:           var(background);
-    selected-normal-background:  var(selected);
-    selected-normal-foreground:  var(background);
+    active-foreground:           var(foreground);
+    selected-normal-background:  var(background-alt);
+    selected-normal-foreground:  var(foreground);
     selected-urgent-background:  var(active);
     selected-urgent-foreground:  var(background);
     selected-active-background:  var(urgent);
@@ -50,30 +54,28 @@ configuration {
 
 /*****----- Main Window -----*****/
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       750px;
     x-offset:                    0px;
     y-offset:                    0px;
 
-    /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      1px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
+    border:                      0px solid;
+    border-radius:               12px;
+    border-color:                @selected;
+    background-color:            @background;
     cursor:                      "default";
-    background-color:            @background-colour;
 }
 
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     5px;
+    spacing:                     0px;
     margin:                      0px;
     padding:                     5px;
     border:                      0px solid;
@@ -88,12 +90,12 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     5px;
-    border:                      0px 0px 1px dash 0px;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            @background-colour;
-    text-color:                  @foreground-colour;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               12px 12px 0px 0px;
+    border-color:                @selected;
+    background-color:            @selected;
+    text-color:                  @background;
     children:                    [ "prompt", "entry" ];
 }
 
@@ -219,7 +221,7 @@ mode-switcher{
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               12px;
     border-color:                @border-colour;
     background-color:            transparent;
     text-color:                  @foreground-colour;
@@ -252,7 +254,7 @@ message {
 textbox {
     padding:                     5px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               12px;
     border-color:                @border-colour;
     background-color:            @alternate-background;
     text-color:                  @foreground-colour;

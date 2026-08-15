@@ -11,12 +11,19 @@
 configuration {
 	modi:                       "drun";
     show-icons:                 true;
-    display-drun:               " Applications";
+    display-drun:               " ";
 	drun-display-format:        "{name}";
 }
 
 /*****----- Global Properties -----*****/
-@import                          "colors/catpuccin.rasi"
+* {
+    background:     #181825FF;
+    background-alt: #282839FF;
+    foreground:     #D9E0EEFF;
+    selected:       #B4BEFEFF;
+    active:         #ABE9B3FF;
+    urgent:         #F28FADFF;
+}
 
 /*****----- Main Window -----*****/
 window {
