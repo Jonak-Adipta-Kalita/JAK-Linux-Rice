@@ -128,7 +128,11 @@ sudo pacman -S --needed --noconfirm \
 	hyprpicker \
 	zoxide \
 	fzf \
-	sassc
+	sassc \
+	qt5ct \
+	qt6ct \
+	kvantum \
+	imagemagick
 paru -S --needed --noconfirm \
 	awww \
 	tree \
