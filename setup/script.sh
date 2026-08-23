@@ -192,7 +192,8 @@ paru -S --needed --noconfirm \
   spicetify-cli
 sudo pacman -S --needed --noconfirm \
   flatpak \
-  obsidian
+  obsidian \
+  xournalapp
 flatpak install flathub app.zen_browser.zen
 echo
 
