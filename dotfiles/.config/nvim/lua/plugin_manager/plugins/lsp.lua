@@ -67,6 +67,12 @@ return {
 				organize_imports_on_format = true,
 			})
 
+			lspconfig.clangd.setup({
+				cmd = { "clangd", "--background-index", "--query-driver=**" },
+				filetypes = { "c", "cpp" },
+				root_dir = require('lspconfig.util').root_pattern("compile_commands.json", "platformio.ini", ".git"),
+			})
+
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
