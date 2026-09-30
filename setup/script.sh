@@ -42,7 +42,7 @@ echo
 
 # --- Installation ---
 info "installing base packages"
-sudo pacman -S --needed --noconfirm hyprland kitty git make curl jq
+sudo pacman -S --needed --noconfirm hyprland kitty git make curl jq base-devel
 echo
 
 info "installing rust via rustup..."
@@ -132,7 +132,8 @@ sudo pacman -S --needed --noconfirm \
 	qt5ct \
 	qt6ct \
 	kvantum \
-	imagemagick
+	imagemagick \
+	xdg-user-dirs
 paru -S --needed --noconfirm \
 	awww \
 	tree \
@@ -141,23 +142,34 @@ paru -S --needed --noconfirm \
 	catppuccin-cursors-mocha
 echo
 
+xdg-user-dirs-update
+
+backup_dir="$HOME/.config-backup-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$HOME/.config"
+for dir in "$REPO_DIR"/dotfiles/.config/*; do
+    name=$(basename "$dir")
+    target="$HOME/.config/$name"
+
+    if [ -e "$target" ] && [ ! -L "$target" ]; then
+        mkdir -p "$backup_dir"
+        info "Backing up existing $name to $backup_dir"
+        mv "$target" "$backup_dir/"
+    fi
+
+    info "Linking $name"
+    ln -sfn "$dir" "$target"
+done
+if [ -e "$HOME/.bashrc" ] && [ ! -L "$HOME/.bashrc" ]; then
+    mkdir -p "$backup_dir"
+    mv "$HOME/.bashrc" "$backup_dir/"
+fi
+ln -sfn "$REPO_DIR/.bashrc" "$HOME/.bashrc"
+echo
+
 info "getting the lovely wallpapers"
-xdg-users-dirs-update
 ln -sfn "$REPO_DIR"/assets/wallpapers "$HOME/Pictures/Wallpapers"
 awww-daemon & disown
 awww img "$REPO_DIR"/assets/wallpapers/1.png
-echo
-
-if [ -e "$HOME/.config/$name" ] && [ ! -L "$HOME/.config/$name" ]; then
-    mv "$HOME/.config/$name" "$backup_dir/"
-fi
-for dir in "$REPO_DIR"/dotfiles/.config/*; do
-    name=$(basename "$dir")
-
-    info "Linking $name"
-    ln -sfn "$dir" "$HOME/.config/$name"
-done
-ln -sfn "$REPO_DIR"/.bashrc $HOME/.bashrc
 echo
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
