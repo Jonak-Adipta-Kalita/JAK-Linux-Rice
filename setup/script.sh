@@ -133,7 +133,8 @@ sudo pacman -S --needed --noconfirm \
 	qt6ct \
 	kvantum \
 	imagemagick \
-	xdg-user-dirs
+	xdg-user-dirs \
+	hyprlock
 paru -S --needed --noconfirm \
 	awww \
 	tree \
@@ -191,7 +192,6 @@ echo
 info "installing fish shell..."
 command -v fish | sudo tee -a /etc/shells
 chsh -s "$(command -v fish)"
-fish
 curl -sS https://starship.rs/install.sh | sh
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 fisher install jorgebucaran/fisher
