@@ -205,7 +205,8 @@ paru -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
   flatpak \
   obsidian \
-  xournalapp
+  xournalapp \
+  fuse2
 flatpak install flathub app.zen_browser.zen
 echo
 
