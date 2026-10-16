@@ -4,15 +4,15 @@
 
 /* ==================== CATPPUCCIN MOCHA ==================== */
 
-@define-color text              #cdd6f4;
-@define-color background        #1e1e2e;
+@define-color text              #e0c5c8;
+@define-color background        #3d020d;
 @define-color background-alt    #181825;
 
 @define-color selected          #cba6f7;
 @define-color hover             #45475a;
 @define-color urgent            #f38ba8;
 
-@define-color surface           #313244;
+@define-color surface           #691c24;
 @define-color surface-hover     #45475a;
 
 @define-color surface-low       #181825;
@@ -22,6 +22,7 @@
 @define-color subtext0          #a6adc8;
 @define-color subtext1          #bac2de;
 
+@define-color cherryred         #751d27;
 @define-color mauve             #cba6f7;
 @define-color lavender          #b4befe;
 @define-color blue              #89b4fa;
@@ -181,9 +182,9 @@
   > *:last-child
   > *
   .notification-action {
-  background: alpha(@mauve, 0.18);
+  background: alpha(@cherryred, 0.18);
 
-  color: @mauve;
+  color: @cherryred;
 
   border-radius: 10px;
 
@@ -204,9 +205,9 @@
   > *:last-child
   > *
   .notification-action:hover {
-  background: alpha(@mauve, 0.28);
+  background: alpha(@cherryred, 0.28);
 
-  border-color: alpha(@mauve, 0.4);
+  border-color: alpha(@cherryred, 0.4);
 
   transform: scale(1.02);
 }
@@ -239,7 +240,7 @@
 }
 
 .widget-title button {
-  background: @surface;
+  background: @cherryred;
 
   border-radius: 10px;
 
@@ -255,7 +256,7 @@
 }
 
 .widget-title button:hover {
-  background: @surface-high;
+  background: @cherryred;
 
   border-color: alpha(@mauve, 0.35);
 
@@ -465,7 +466,7 @@
 /* ==================== SWITCH ==================== */
 
 .widget-dnd > switch {
-  background: @surface-high;
+  background: #2b0106;
 
   border-radius: 24px;
 
