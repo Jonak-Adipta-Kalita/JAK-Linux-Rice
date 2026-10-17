@@ -7,3 +7,4 @@ vim.opt.softtabstop = 4
 vim.opt.mouse = "a"
 vim.opt.encoding = "utf-8"
 vim.opt.completeopt = vim.o.completeopt:gsub("preview", "")
+vim.opt.termguicolors = true
