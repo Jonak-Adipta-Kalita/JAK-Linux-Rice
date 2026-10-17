@@ -1,104 +1,87 @@
 return {
-    "neovim/nvim-lspconfig",
+	{
+		"neovim/nvim-lspconfig",
 
-    dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "j-hui/fidget.nvim",
-        "hrsh7th/cmp-nvim-lsp",
-    },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"j-hui/fidget.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+		},
 
-    config = function()
-        local cmp_lsp = require("cmp_nvim_lsp")
+		config = function()
+			local cmp_lsp = require("cmp_nvim_lsp")
+			local capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				cmp_lsp.default_capabilities()
+			)
 
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities()
-        )
+			require("fidget").setup({})
 
-        require("fidget").setup({})
-        require("mason").setup({})
+			require("mason").setup({})
 
-        local servers = {
-            "pylsp",
-            "ts_ls",
-            "lua_ls",
-            "clangd",
-            "gopls",
-            "rust_analyzer",
-            "tailwindcss",
-            "svelte",
-            "emmet_ls",
-            "omnisharp",
-        }
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"pylsp",
+					"ts_ls",
+					"lua_ls",
+					"clangd",
+					"gopls",
+					"rust_analyzer",
+					"tailwindcss",
+					"svelte",
+					"emmet_ls",
+					"omnisharp",
+				},
+				handlers = {
+					function(server_name)
+						require("lspconfig")[server_name].setup {
+							capabilities = capabilities
+						}
+					end,
+				},
+			})
 
-        require("mason-lspconfig").setup({
-            ensure_installed = servers,
-        })
+			local lspconfig = require("lspconfig")
 
-        for _, server in ipairs(servers) do
-            vim.lsp.config(server, {
-                capabilities = capabilities,
-            })
-        end
+			lspconfig.lua_ls.setup {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" }
+						},
+						workspaces = {
+							library = {}
+						}
+					}
+				}
+			}
 
-        vim.lsp.config("lua_ls", {
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    workspace = {
-                        library = {},
-                    },
-                },
-            },
-        })
+			lspconfig.rust_analyzer.setup {}
 
-        vim.lsp.config("rust_analyzer", {
-            capabilities = capabilities,
-        })
+			lspconfig.omnisharp.setup({
+				cmd = { "dotnet", vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll" },
+				enable_roslyn_analyzers = true,
+				organize_imports_on_format = true,
+			})
 
-        vim.lsp.config("omnisharp", {
-            capabilities = capabilities,
-            cmd = {
-                vim.fn.stdpath("data")
-                    .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
-            },
-            enable_roslyn_analyzers = true,
-            organize_imports_on_format = true,
-        })
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
-        for _, server in ipairs(servers) do
-            vim.lsp.enable(server)
-        end
-
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
-            desc = "Go to definition",
-        })
-
-        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, {
-            desc = "Line diagnostics",
-        })
-
-        vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, {
-            desc = "Diagnostics list",
-        })
-
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-
-        vim.diagnostic.config({
-            float = {
-                focusable = false,
-                style = "minimal",
-                border = "rounded",
-                source = "always",
-                header = "",
-                prefix = "",
-            },
-        })
-    end,
+			vim.diagnostic.config({
+				float = {
+					focusable = false,
+					style = "minimal",
+					border = "rounded",
+					source = "always",
+					header = "",
+					prefix = "",
+				},
+			})
+		end
+	}
 }
